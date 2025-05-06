@@ -1,0 +1,672 @@
+/* Global */
+body {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* === YOUR CUSTOM CSS STARTS HERE === */
+
+/* Navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: none;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link {
+  color: #ffb703;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffd702;
+  transform: scale(1.1);
+}
+
+.navbar-brand {
+  color: #ffa500;
+  font-family: "Pacifico", cursive, sans-serif;
+  font-size: 1.5rem;
+}
+
+.navbar-brand .brand-text {
+  font-family: "Pacifico", cursive, sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-brand .brand-text:hover {
+  transform: scale(1.05) rotate(-1deg);
+  text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
+}
+
+.navbar-brand:hover {
+  color: #ffa500;
+}
+
+.navbar-toggler-icon {
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler-icon:hover {
+  background-color: #ffd700;
+}
+
+/* Hero Section */
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  padding-top: 0;
+  overflow-x: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* animation: zoomEffect 10s ease-in-out infinite; */
+  transition: background-image 1s ease-in-out;
+  z-index: 0;
+  overflow: hidden;
+  
+}
+
+/* @keyframes zoomEffect {
+  0%, 100% {
+    transform: scale(1.003);
+  }
+  50% {
+    transform: scale(1.0005);
+  }
+} */
+
+
+/* Adjust transform-origin for large screens */
+@media (min-width: 1200px) {
+  .hero-bg {
+    transform-origin: center center;
+  }
+}
+
+#hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.2)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-in-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-family: "Pacifico", cursive, sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffb703, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeSlideIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: #f1f1f1;
+  font-style: italic;
+}
+
+.hero-content .btn-primary {
+  background-color: #ffb703; /* Gold */
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glossy shine overlay */
+.hero-content .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  pointer-events: none;
+}
+
+/* Shine sweep animation */
+.hero-content .btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.hero-content .btn-primary:hover::before {
+  left: 150%;
+}
+
+.hero-content .btn-primary:hover {
+  background-color: #ffa500; /* Slightly deeper gold */
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Rotating Hero Subtitle */
+.rotating-text {
+  position: relative;
+  height: 2rem;
+  overflow: hidden;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-family: "Poppins", sans-serif;
+  color: #f0f8ff;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.rotating-text span {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation: rotateText 9s linear infinite;
+}
+
+.rotating-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+.rotating-text span:nth-child(2) {
+  animation-delay: 3s;
+}
+.rotating-text span:nth-child(3) {
+  animation-delay: 6s;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateText {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(-130%);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p,
+  .navbar-nav .nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+.destination-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.destination-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.destination-card:hover .destination-overlay {
+  opacity: 1;
+}
+
+.destination-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.1);
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.section-title p {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.destination-card:hover .destination-overlay {
+  background: rgba(255, 215, 0, 0.6); /* Gold overlay on hover */
+}
+
+.destination-card:hover h5 {
+  color: #ffd700; /* Gold text color on hover */
+}
+#about {
+  background-color: #f7f7f7; /* Light background to complement the gold theme */
+}
+
+
+
+.section-title p {
+  font-size: 1.2rem;
+  color: #555; /* Slightly darker text for readability */
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* AOS fade-in effect with slight delay */
+.section-title,
+.lead {
+  transition: opacity 1s ease;
+}
+
+  #packages {
+    background: linear-gradient(to right, #f8f9fa, #fffbe6);
+  }
+
+ 
+  .package-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+
+  .package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .package-card img {
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .package-card .card-body {
+    padding: 1.5rem;
+  }
+
+  .package-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+
+  .package-card .card-text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+/* section */
+/* Section Base - Light with soft gold undertone */
+.about-section {
+  position: relative;
+  /* background: linear-gradient(to bottom, #fffaf2, #fff5e6);  */
+  padding: 4rem 0;
+  color: #3d2f1c; /* Soft dark brown for text */
+  z-index: 1;
+  overflow: hidden;
+}
+
+
+
+/* Subtle Ancient Texture Overlay */
+.gold-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* background-image: url('./img/download\ \(1\).jpeg');  */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.02; /* Lighter texture visibility */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Heading */
+.gold-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.5rem;
+  color: #ffa500; /* Brand-matching vibrant gold-orange */
+  text-shadow: 1px 1px 6px rgba(255, 165, 0, 0.25); /* Soft glow using brand tone */
+  position: relative;
+  z-index: 2;
+}
+
+/* Description Text */
+.about-description {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5a4429;
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.gold-underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #ffa500, #ffd700, #ffa500);
+  border-radius: 2px;
+  margin: 1rem auto;
+}
+
+.btn-gold {
+  background-color: #ffa500;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
+}
+.btn-gold:hover {
+  background-color: #ffb300;
+  transform: scale(1.05);
+}
+
+
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .about-section {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .gold-underline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* Owl Carousel Specific Styling */
+.owl-carousel .owl-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.mkdf-tdm-item-holder {
+  position: relative;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  background-color: #fff;
+}
+
+.mkdf-tdm-item-holder:hover {
+  transform: scale(1.05);
+}
+
+.mkdf-tours-destination-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mkdf-tours-destination-item-image {
+  width: 100%;
+  height: 250px; /* Adjust height as needed */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.mkdf-tours-destination-item-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.mkdf-tours-destination-item-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mkdf-tours-destination-desc {
+  font-size: 14px;
+}
+
+/* Custom Navigation Buttons */
+.owl-prev, .owl-next {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.owl-prev {
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.owl-next {
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.owl-prev:hover, .owl-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .mkdf-tdm-item-holder {
+      margin: 5px;
+  }
+
+  .mkdf-tours-destination-item-title {
+      font-size: 16px;
+  }
+
+  .mkdf-tours-destination-desc {
+      font-size: 12px;
+  }
+}
+
+.hero-bg {
+  transition: background-image 1s ease-in-out;
+}
+
+.owl-carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+
+
+.luxury-heading {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.5rem;
+  color: #ffa500;
+  text-shadow: 1px 1px 6px rgba(255, 165, 0, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.text-gold {
+  color: #C9A14A;
+}
+
+.bg-gold {
+  background-color: #C9A14A;
+}
+
+
+
+.footer-link:hover {
+  color: #ffa500 !important;
+  text-decoration: underline;
+}
+
+
+
+footer {
+  background-color: #333;
+}
+
+footer a {
+  transition: all 0.3s ease;
+}
+
+.luxury-heading {
+  font-size: 2.5rem; /* Adjust based on your need */
+}
+.small-font {
+  font-size: 1.2rem; /* Smaller font for text */
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .luxury-heading {
+    font-size: 1.8rem; /* Smaller heading font on small screens */
+  }
+  .small-font {
+    font-size: 1rem; /* Smaller paragraph font on small screens */
+  }
+}
