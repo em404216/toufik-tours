@@ -30,13 +30,15 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color: #ffb703;
+ 
   transition: color 0.3s ease, transform 0.3s ease;
   font-weight: 500;
   letter-spacing: 0.5px;
   font-size: 1rem;
 }
-
+.navbar-scrolled .navbar-nav .nav-link {
+  color: #ffb703 !important; /* Change color when scrolling */
+}
 .navbar-nav .nav-link:hover {
   color: #ffd702;
   transform: scale(1.1);
@@ -68,9 +70,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.navbar-toggler-icon:hover {
-  background-color: #ffd700;
-}
+
 
 /* Hero Section */
 #hero {
